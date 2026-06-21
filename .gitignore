@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 데이터 (대용량 이미지는 깃에 올리지 않기)
+data/
+정상/
+결함/
+*.jpg
+*.jpeg
+*.png
+
+# 모델/메모리뱅크 캐시
+*.pt
+*.pth
+*.npy
+*.pkl
+
+# OS / 에디터
+.DS_Store
+.vscode/
+.idea/
+
+# Gradio 임시 파일
+flagged/
+gradio_cached_examples/
