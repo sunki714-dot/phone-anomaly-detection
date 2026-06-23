@@ -1,0 +1,27 @@
+# Default configuration for phone-anomaly-detection.
+
+seed: 42
+device: auto          # auto | cuda | cpu
+img_size: 256
+
+data:
+  good_dir: data/good        # 정상 (normal) images
+  defect_dir: data/defect    # 결함 (defect) images
+  train_ratio: 0.8           # fraction of normals used for the memory bank
+  use_demo_if_missing: true  # generate synthetic data when dirs are absent
+
+backbone:
+  name: wide_resnet50_2      # resnet18 | wide_resnet50_2 | densenet121
+  layers: [layer2, layer3]
+
+patchcore:
+  coreset_ratio: 0.10        # keep ~10% of normal patches in the memory bank
+  n_projection: 128          # random-projection dim for the coreset distance
+  smoothing_sigma: 2.0       # Gaussian smoothing of the anomaly map
+  threshold: 2.8             # decision threshold on the image-level score
+
+padim:
+  n_dims: 100                # random feature dims for the per-position Gaussian
+
+ensemble:
+  weight: 0.5                # z-score blend weight on PatchCore vs PaDiM
